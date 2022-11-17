@@ -1,6 +1,6 @@
 /* Imports */
-import { fetchMovies, fetchPlaces, fetchCars } from './fetch-utils.js';
-import { renderMovie, renderPlace, renderCar } from './render-utils.js';
+import { fetchMovies, fetchPlaces, fetchCars, fetchAnimals } from './fetch-utils.js';
+import { renderMovie, renderPlace, renderCar, renderAnimal } from './render-utils.js';
 
 /* Get DOM Elements */
 const movieList = document.getElementById('movie-list');
@@ -25,12 +25,22 @@ window.addEventListener('load', async () => {
     }
 });
 
-const carList = document.getElementsById('car-list');
+const carList = document.getElementById('car-list');
 
 window.addEventListener('load', async () => {
     const cars = await fetchCars();
     for (let car of cars) {
         const carEl = renderCar(car);
         carList.append(carEl);
+    }
+});
+
+const animalList = document.getElementById('animal-list');
+
+window.addEventListener('load', async () => {
+    const animals = await fetchAnimals();
+    for (let animal of animals) {
+        const animalEl = renderAnimal(animal);
+        animalList.append(animalEl);
     }
 });
