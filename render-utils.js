@@ -37,3 +37,27 @@ export function renderPlace(place) {
     div.append(country, city, code, zone);
     return div;
 }
+
+export function renderCar(car) {
+    const div = document.createElement('div');
+    div.classList.add('cars');
+
+    const name = document.createElement('h2');
+    name.textContent = car.name;
+
+    const model = document.createElement('p');
+    model.textContent = car.model;
+
+    const year = document.createElement('p');
+    year.textContent = car.year;
+
+    const colors = document.createElement('ul');
+    colors.textContent = car.color;
+    for (let color of colors) {
+        const li = document.createElement('li');
+        li.textContent = color;
+        colors.append(li);
+    }
+    div.append(name, model, year, colors);
+    return div;
+}

@@ -1,6 +1,6 @@
 /* Imports */
-import { fetchMovies, fetchPlaces } from './fetch-utils.js';
-import { renderMovie, renderPlace } from './render-utils.js';
+import { fetchMovies, fetchPlaces, fetchCars } from './fetch-utils.js';
+import { renderMovie, renderPlace, renderCar } from './render-utils.js';
 
 /* Get DOM Elements */
 const movieList = document.getElementById('movie-list');
@@ -24,6 +24,13 @@ window.addEventListener('load', async () => {
         placeList.append(placeEl);
     }
 });
-/* Display Functions */
 
-// (don't forget to call any display functions you want to run on page load!)
+const carList = document.getElementsById('car-list');
+
+window.addEventListener('load', async () => {
+    const cars = await fetchCars();
+    for (let car of cars) {
+        const carEl = renderCar(car);
+        carList.append(carEl);
+    }
+});

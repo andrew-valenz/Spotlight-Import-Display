@@ -21,3 +21,9 @@ export async function fetchCars() {
 
     return response.data;
 }
+
+export async function fetchAnimals() {
+    const response = await client.from('animals').select('*');
+
+    return response.data;
+}
